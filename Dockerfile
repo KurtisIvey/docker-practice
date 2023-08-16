@@ -4,6 +4,7 @@ FROM node:15
 WORKDIR /app
 # set package.json, "." applies to current working directory
 COPY package.json .
+ARG NODE_ENV
 # npm install to install packages, only want production
 RUN if [ "$NODE_ENV" = "development" ]; \
     then npm install; \
