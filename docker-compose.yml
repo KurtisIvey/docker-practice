@@ -8,4 +8,14 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
-      
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=kurtis
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
+    volumes:
+    # gives name to mongo volume thats human readable vers rando nums and chars
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
