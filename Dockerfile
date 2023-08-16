@@ -14,7 +14,7 @@ ENV PORT=3000
 # give port to access
 EXPOSE $PORT
 # tell what file to run on container
-CMD [ "npm", "run", "dev" ]
+CMD [ "node", "index.js"]
 
 #docker guide
 # create image , docker % docker build -t node-app-image .
