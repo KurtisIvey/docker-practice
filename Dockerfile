@@ -4,13 +4,15 @@ FROM node:15
 WORKDIR /app
 # set package.json, "." applies to current working directory
 COPY package.json .
-# npm install to install packages
-RUN npm install
+# npm install to install packages, only want production
+RUN if [ "$NODE_ENV" = "development" ]; \
+    then npm install; \
+    else npm install --only=production; \
+    fi
 # copy current directory, 
 COPY . ./
 # env vars
 ENV PORT=3000
-
 # give port to access
 EXPOSE $PORT
 # tell what file to run on container
