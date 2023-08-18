@@ -7,8 +7,9 @@ const {
   MONGO_PORT,
 } = require("./config/config");
 
-const app = express();
+const postRouter = require("./routes/postRoutes");
 
+const app = express();
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}?authSource=admin`;
 
 const connectWithRetry = () => {
@@ -22,10 +23,14 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
+// so backend can understand raw json format
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("<h2>Hi There</h2>");
 });
+//localhost:3000/posts
+app.use("/api/v1/posts", postRouter);
 
 const port = process.env.PORT || 3000;
 

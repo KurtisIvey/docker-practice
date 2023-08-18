@@ -2,7 +2,7 @@ const express = require("express");
 
 const postController = require("../controllers/postController");
 
-const router = express.router();
+const router = express.Router();
 
 //localhost:3000/
 router
