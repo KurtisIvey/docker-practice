@@ -18,6 +18,10 @@ services:
     volumes:
     # gives name to mongo volume thats human readable vers rando nums and chars
       - mongo-db:/data/db
+  redis:
+    image: redis
 
+
+    
 volumes:
   mongo-db:
