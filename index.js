@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const session = require("express-session");
 const {
   MONGO_USER,
@@ -36,6 +37,8 @@ connectWithRetry();
 
 redisClient.connect().catch(console.error);
 
+app.enable("trust proxy");
+app.use(cors({}));
 app.use(
   session({
     proxy: true,
@@ -54,8 +57,9 @@ app.use(
 // so backend can understand raw json format
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send("<h2>Hi There</h2>");
+  console.log("yeah it ran");
 });
 //localhost:3000/posts
 app.use("/api/v1/posts", postRouter);
