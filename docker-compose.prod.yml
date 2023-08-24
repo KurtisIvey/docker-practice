@@ -9,12 +9,12 @@ services:
       restart_policy:
         condition: any
       update_config:
-        parallelism: 2
         delay: 15s
     build:
-        context: .
-        args:
-          NODE_ENV: production
+      context: .
+      args:
+        NODE_ENV: production
+
     environment:
       - NODE_ENV=production
       - MONGO_USER=${MONGO_USER}
@@ -25,4 +25,3 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-   
