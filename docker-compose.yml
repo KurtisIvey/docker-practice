@@ -13,6 +13,7 @@ services:
   node-app:
     build: .
     image: kurtiveycodes/node-app
+    platform: linux/amd64   # Specify the platform for the image
     environment:
       - PORT=3000
     depends_on:
